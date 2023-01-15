@@ -1,0 +1,7 @@
+As a security engineer, these are suggestions for security measures we may put in place on our servers to protect 
+them from brute force attacks and stop unauthorized access. We must obtain management approval before implementing 
+these modifications. These adjustments are as follows:
+
+1. Implement two-factor authentication
+2. Use TCP wrappers to limit access to specific hosts
+3. Implement brute-force protection such as Fail2ban
