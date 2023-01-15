@@ -3,9 +3,52 @@
 
 # Apache Version
 
+1. Before the conf change: 
+
+krillavilla in ~ …
+❯ curl --head http://192.168.1.191
+HTTP/1.1 200 OK
+Date: Sun, 15 Jan 2023 02:25:42 GMT
+Server: Apache/2.4.7 (Ubuntu)
+Last-Modified: Sun, 15 Jan 2023 02:09:45 GMT
+ETag: "2cf6-5f243f5e3b6e5"
+Accept-Ranges: bytes
+Content-Length: 11510
+Vary: Accept-Encoding
+Content-Type: text/html
+
+2. After the conf. change:
+
+krillavilla in ~ …
+❯ curl --head http://192.168.1.191
+HTTP/1.1 200 OK
+Date: Sun, 15 Jan 2023 02:28:22 GMT
+Server: Apache
+Last-Modified: Sun, 15 Jan 2023 02:09:45 GMT
+ETag: "2cf6-5f243f5e3b6e5"
+Accept-Ranges: bytes
+Content-Length: 11510
+Vary: Accept-Encoding
+Content-Type: text/html
 
 
 # Configuration file change(Hint: the change has to be made in /etc/apache2/conf-enabled/security.conf)
 
+
+1. nano /etc/apache2/conf-enabled/security.conf
+
+2. Scroll down to the “ServerTokens” section where you’ll probably see multiple lines commented out (beginning with “#”) stating “ServerTokens” and different options. Change the uncommented line, likely “ServerTokens OS”, or comment out the line and create a new line to hide the Apache version and OS from HTTP headers:
+
+      ServerTokens Prod
+      
+2. The next section down should be the “ServerSignature” section. commend out 'ServerSignature On' and add:
+
+    ServerSignature Off
+    
+3. Exit and Save the file.
+
+4. Restart Apache services:
+
+  service apache2 restart 
 
 
