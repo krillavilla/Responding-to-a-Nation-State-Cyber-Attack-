@@ -3,5 +3,32 @@
 
 #Configuration lines:
 
+1. create a new user group called “apache-group”:
 
+command > $ sudo groupadd apache-group
+
+
+2.  new user account called 'apache-user':
+
+command > $ sudo useradd apache-user
+
+
+3 add 'apache-user' to group 'apache-group':
+
+command > $ usermod -g apache-group apache-user
+
+
+4. edit /etc/sudoers file under sudo or root access, add this line:
+
+# Deny apache-user from su escalation and changing root password 
+apache-user ALL=(ALL:ALL) ALL, !/bin/su, !/usr/bin/passwd *root*
+
+Example output:
+
+$ whoami
+apache-user
+$ sudo su
+[sudo] password for apache-user: 
+Sorry, user apache-user is not allowed to execute '/bin/su' as root on ubuntu-VirtualBox.
+$ 
 
