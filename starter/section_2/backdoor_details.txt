@@ -1,16 +1,10 @@
-# Provide the backdoor entries created by the nation-state attackers. 
+# Provide the backdoor entries created by the nation-state attackers.
 
-# Rouge Username
-
+# Rogue Username
 Rogue Username: darklord
 
 # Backdoor process name
-
 remotesec
 
 # Backdoor port number the above process is listening on
-
-Backdoor Listening Port: 25414
-
-
-
+Backdoor Listening Port: 56565
